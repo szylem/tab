@@ -1,10 +1,10 @@
 const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://saint:praca@cluster0-iip04.mongodb.net/test?retryWrites=true&w=majority"
+var status;
 
 exports.dodajSprawe = function (res, q, qdata) {
   console.log('Panel dodawania');
   if(q.search != null){
-    var status = 0;
     console.log(qdata.obiekt);
     console.log("msg:" + qdata.msg);
 //połączenie z bazą
@@ -19,13 +19,13 @@ exports.dodajSprawe = function (res, q, qdata) {
     //tworzenie wpisu
     var myobj = { obiekt: qdata.obiekt, msg: qdata.msg , "data utworzenia": data, aktywny: 1 };
     //dodanie wpisu
+    status = 0;
     dbo.collection("dash").insertOne(myobj, function(err, res) {
     if (err) throw err;
     console.log("1 document inserted");
     status = 1;
     db.close();
   });
-});
     if(status == 1){
       res.write('<br>' + 'Pomyślnie dodano sprawę dla: ');
       res.write('<b>' + qdata.obiekt + '</b>');
@@ -33,5 +33,7 @@ exports.dodajSprawe = function (res, q, qdata) {
       res.write('<br>' + 'Problem z bazą danych! Sprawa dla ');
       res.write('<b>' + qdata.obiekt + '</b>' + " nie została dodana.");
     }
+});
+    
   }
 };
