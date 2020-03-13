@@ -28,12 +28,5 @@ exports.dodajSprawe = function (res, q, qdata) {
       });
     
     });
-    if(status == 1){
-      res.write('<br>' + 'Pomyślnie dodano sprawę dla: ');
-      res.write('<b>' + qdata.obiekt + '</b>');
-    } else if (status == 0){
-      res.write('<br>' + 'Problem z bazą danych! Sprawa dla ');
-      res.write('<b>' + qdata.obiekt + '</b>' + " nie została dodana.");
-    }
   }
 };
