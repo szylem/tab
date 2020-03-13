@@ -7,25 +7,27 @@ exports.dodajSprawe = function (res, q, qdata) {
   if(q.search != null){
     console.log(qdata.obiekt);
     console.log("msg:" + qdata.msg);
-//połączenie z bazą
+    //połączenie z bazą
     MongoClient.connect(uri, function(err, db) {
-    if (err) throw err;
-    var dbo = db.db("saint");
-    //składanie daty wpisu
-    var d = new Date();
-    var data = d.getFullYear() + "-";
-    data += (((d.getMonth()+1) < 10) ? "0" + (d.getMonth()+1) : (d.getMonth()+1)) + "-";
-    data += (d.getDate() < 10) ? "0" + d.getDate() : d.getDate();
-    //tworzenie wpisu
-    var myobj = { obiekt: qdata.obiekt, msg: qdata.msg , "data utworzenia": data, aktywny: 1 };
-    //dodanie wpisu
-    status = 0;
-    dbo.collection("dash").insertOne(myobj, function(err, res) {
-    if (err) throw err;
-    console.log("1 document inserted");
-    status = 1;
-    db.close();
-  });
+      if (err) throw err;
+      var dbo = db.db("saint");
+      //składanie daty wpisu
+      var d = new Date();
+      var data = d.getFullYear() + "-";
+      data += (((d.getMonth()+1) < 10) ? "0" + (d.getMonth()+1) : (d.getMonth()+1)) + "-";
+      data += (d.getDate() < 10) ? "0" + d.getDate() : d.getDate();
+      //tworzenie wpisu
+      var myobj = { obiekt: qdata.obiekt, msg: qdata.msg , "data utworzenia": data, aktywny: 1 };
+      //dodanie wpisu
+      status = 0;
+      dbo.collection("dash").insertOne(myobj, function(err, res) {
+        if (err) throw err;
+        console.log("1 document inserted");
+        status = 1;
+        db.close();
+      });
+    
+    });
     if(status == 1){
       res.write('<br>' + 'Pomyślnie dodano sprawę dla: ');
       res.write('<b>' + qdata.obiekt + '</b>');
@@ -33,7 +35,5 @@ exports.dodajSprawe = function (res, q, qdata) {
       res.write('<br>' + 'Problem z bazą danych! Sprawa dla ');
       res.write('<b>' + qdata.obiekt + '</b>' + " nie została dodana.");
     }
-});
-    
   }
 };
