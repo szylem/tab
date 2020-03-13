@@ -4,6 +4,7 @@ const uri = "mongodb+srv://saint:praca@cluster0-iip04.mongodb.net/test?retryWrit
 exports.dodajSprawe = function (res, q, qdata) {
   console.log('Panel dodawania');
   if(q.search != null){
+    var status = 0;
     console.log(qdata.obiekt);
     console.log("msg:" + qdata.msg);
 //połączenie z bazą
@@ -21,10 +22,16 @@ exports.dodajSprawe = function (res, q, qdata) {
     dbo.collection("dash").insertOne(myobj, function(err, res) {
     if (err) throw err;
     console.log("1 document inserted");
+    status = 1;
     db.close();
   });
 });
-    res.write('<br>' + 'Pomyślnie dodano sprawę dla: ');
-    res.write('<b>' + qdata.obiekt + '</b>');
+    if(status === 1){
+      res.write('<br>' + 'Pomyślnie dodano sprawę dla: ');
+      res.write('<b>' + qdata.obiekt + '</b>');
+    } else if (status === 0){
+      res.write('<br>' + 'Problem z bazą danych! Sprawa dla: ');
+      res.write('<b>' + qdata.obiekt + '</b>' + " nie została dodana.");
+    }
   }
 };
