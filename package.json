@@ -1,0 +1,22 @@
+{
+  "name": "coolnodeapp",
+  "version": "1.0.0",
+  "description": "node app ",
+  "main": "index.html",
+  "scripts": {
+  "start": "node server.js"
+},
+"dependencies": {
+       "mongodb": "*",
+},
+  "repository": {
+  "type": "git",
+  "url": ""
+},
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+  "url": ""
+},
+  "homepage": ""
+}
