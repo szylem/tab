@@ -1,14 +1,13 @@
 const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://saint:praca@cluster0-iip04.mongodb.net/test?retryWrites=true&w=majority"
+var status;
 
 exports.dodajSprawe = function (res, q, qdata) {
   console.log('Panel dodawania');
   if(q.search != null){
-    var status;
     console.log(qdata.obiekt);
     console.log("msg:" + qdata.msg);
     //połączenie z bazą
-    status = false;
     MongoClient.connect(uri, function(err, db) {
       if (err) throw err;
       var dbo = db.db("saint");
@@ -20,15 +19,15 @@ exports.dodajSprawe = function (res, q, qdata) {
       //tworzenie wpisu
       var myobj = { obiekt: qdata.obiekt, msg: qdata.msg , "data utworzenia": data, aktywny: 1 };
       //dodanie wpisu
-      dbo.collection("dash").insertOne(myobj, function(err, res) {
+      status = dbo.collection("dash").insertOne(myobj, function(err, res) {
         if (err) throw err;
         console.log("1 document inserted");
         db.close();
       });
-    status = true;
-    });
     
-    if (status) {
+    });
+    res.write(status);
+    /*if (status) {
       res.write('<br>');
       res.write('<div class="alert alert-success">');
       res.write('<strong>Dodano do bazy! </strong>');
@@ -40,6 +39,6 @@ exports.dodajSprawe = function (res, q, qdata) {
       res.write('<strong>Pozycja nie została dodana! </strong>');
       res.write('Nie udało się połączyć z bazą danych. <a href="#" class="alert-link">Zgłoś problem</a>.');
       res.write('</div>');
-    }
+    } */
   }
 };
