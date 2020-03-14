@@ -21,13 +21,17 @@ exports.dodajSprawe = function (res, q, qdata) {
       //dodanie wpisu
       dbo.collection("dash").insertOne(myobj, function(err, res) {
         if (err) throw err;
-        status = false;
-        //console.log("1 document inserted");
+        console.log("1 document inserted");
+        res.write('<br>');
+      res.write('<div class="alert alert-success">');
+      res.write('<strong>Dodano do bazy! </strong>');
+      res.write('Powinieneś już widzieć swoją sprawę na <a href="#" class="alert-link">tablicy</a>.');
+      res.write('</div>');
         db.close();
       });
     
     });
-    if (status) {
+    /*if (status) {
       res.write('<br>');
       res.write('<div class="alert alert-success">');
       res.write('<strong>Dodano do bazy! </strong>');
@@ -39,6 +43,6 @@ exports.dodajSprawe = function (res, q, qdata) {
       res.write('<strong>Pozycja nie została dodana! </strong>');
       res.write('Nie udało się połączyć z bazą danych. <a href="#" class="alert-link">Zgłoś problem</a>.');
       res.write('</div>');
-    } 
+    } */
   }
 };
