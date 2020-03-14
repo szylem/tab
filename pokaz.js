@@ -19,5 +19,5 @@ exports.pokazSprawy = function (res, q, qdata) {
       db.close();
     });
   });
-  res.Write("dane");
+  res.write("dane");
 };
