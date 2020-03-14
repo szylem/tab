@@ -1,8 +1,9 @@
 const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://saint:praca@cluster0-iip04.mongodb.net/test?retryWrites=true&w=majority"
-var result;
+
 
 exports.pokazSprawy = function (res, q, qdata) {
+  var result;
   console.log('Tablica');
   MongoClient.connect(uri, function(err, db) {
     if (err) throw err;
@@ -18,5 +19,5 @@ exports.pokazSprawy = function (res, q, qdata) {
       db.close();
     });
   });
-  res.Write(result);
+  res.Write(result[0].msg);
 };
