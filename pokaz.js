@@ -20,5 +20,5 @@ exports.pokazSprawy = function (res, q, qdata) {
       db.close();
     });
   });
-  console.log(wynik[1].msg);
+  console.log(toArray(wynik));
 };
