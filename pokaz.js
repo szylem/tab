@@ -13,11 +13,12 @@ exports.pokazSprawy = function (res, q, qdata) {
       if (err) throw err;
       //console.log(result);
       for (x in result) {
-        console.log(result[x].obiekt);
-        console.log(result[x].msg);
+        //console.log(result[x].obiekt);
+        //console.log(result[x].msg);
       } 
       db.close();
     });
+    console.log(wynik);
   });
-  res.write(wynik[0]);
+  res.write(wynik[0].msg);
 };
