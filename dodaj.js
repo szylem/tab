@@ -20,7 +20,6 @@ exports.dodajSprawe = function (res, q, qdata) {
       //tworzenie wpisu
       var myobj = { obiekt: qdata.obiekt, msg: qdata.msg , "data utworzenia": data, aktywny: 1 };
       //dodanie wpisu
-      status = 0;
       dbo.collection("dash").insertOne(myobj, function(err, res) {
         if (err) throw err;
         console.log("1 document inserted");
@@ -29,11 +28,17 @@ exports.dodajSprawe = function (res, q, qdata) {
       });
     
     });
-    if (status = 1) {
+    if (status == 1) {
       res.write('<br>');
       res.write('<div class="alert alert-success">');
       res.write('<strong>Dodano do bazy! </strong>');
       res.write('Powinieneś już widzieć swoją sprawę na <a href="#" class="alert-link">tablicy</a>.');
+      res.write('</div>');
+    } else if (status == 0) {
+      res.write('<br>');
+      res.write('<div class="alert alert-danger">');
+      res.write('<strong>Pozycja nie została dodana! </strong>');
+      res.write('Nie udało się połączyć z bazą danych. <a href="#" class="alert-link">Zgłoś problem.</a>.');
       res.write('</div>');
     }
   }
