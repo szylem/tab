@@ -26,8 +26,6 @@ exports.dodajSprawe = function (res, q, qdata) {
       });
     
     });
-    status = status.toString();  
-    res.write('status');
     if (status) {
       res.write('<br>');
       res.write('<div class="alert alert-success">');
