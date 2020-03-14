@@ -26,7 +26,7 @@ exports.dodajSprawe = function (res, q, qdata) {
       });
     
     });
-    res.write(status);
+    //res.write(status);
     /*if (status) {
       res.write('<br>');
       res.write('<div class="alert alert-success">');
