@@ -6,7 +6,7 @@ exports.pokazSprawy = function (res, q, qdata) {
   MongoClient.connect(uri, function(err, db) {
     if (err) throw err;
     var dbo = db.db("saint");
-    var query = { aktywny: "1" };
+    var query = { aktywny: 1 };
     dbo.collection("dash").find(query).toArray(function(err, result) {
       if (err) throw err;
       console.log(result);
