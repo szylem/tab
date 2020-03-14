@@ -1,6 +1,6 @@
 const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://saint:praca@cluster0-iip04.mongodb.net/test?retryWrites=true&w=majority"
-var status = true;
+var status = false;
 
 exports.dodajSprawe = function (res, q, qdata) {
   console.log('Panel dodawania');
@@ -21,7 +21,7 @@ exports.dodajSprawe = function (res, q, qdata) {
       //dodanie wpisu
       dbo.collection("dash").insertOne(myobj, function(err, res) {
         if (err) throw err;
-        status = false;
+        status = true;
         console.log("1 document inserted");
         db.close();
       });
