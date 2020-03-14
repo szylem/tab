@@ -16,6 +16,7 @@ exports.pokazSprawy = function (res, q, qdata) {
         console.log(result[x].obiekt);
         console.log(result[x].msg);
         wynik = result.slice();
+        res.write("połączenie");
       } 
       db.close();
     });
