@@ -8,7 +8,7 @@ exports.dodajSprawe = function (res, q, qdata) {
     console.log(qdata.obiekt);
     console.log("msg:" + qdata.msg);
     //połączenie z bazą
-    status = 0;
+    status = false;
     MongoClient.connect(uri, function(err, db) {
       if (err) throw err;
       var dbo = db.db("saint");
@@ -20,25 +20,25 @@ exports.dodajSprawe = function (res, q, qdata) {
       //tworzenie wpisu
       var myobj = { obiekt: qdata.obiekt, msg: qdata.msg , "data utworzenia": data, aktywny: 1 };
       //dodanie wpisu
-      dbo.collection("dash").insertOne(myobj, function(err, res) {
+      status = dbo.collection("dash").insertOne(myobj, function(err, res) {
         if (err) throw err;
         console.log("1 document inserted");
-        status = 1;
         db.close();
       });
     
     });
-    if (status == 1) {
+    res.write(status);
+    if (status) {
       res.write('<br>');
       res.write('<div class="alert alert-success">');
       res.write('<strong>Dodano do bazy! </strong>');
       res.write('Powinieneś już widzieć swoją sprawę na <a href="#" class="alert-link">tablicy</a>.');
       res.write('</div>');
-    } else if (status == 0) {
+    } else {
       res.write('<br>');
       res.write('<div class="alert alert-danger">');
       res.write('<strong>Pozycja nie została dodana! </strong>');
-      res.write('Nie udało się połączyć z bazą danych. <a href="#" class="alert-link">Zgłoś problem.</a>.');
+      res.write('Nie udało się połączyć z bazą danych. <a href="#" class="alert-link">Zgłoś problem</a>.');
       res.write('</div>');
     }
   }
