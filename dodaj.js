@@ -27,7 +27,7 @@ exports.dodajSprawe = function (res, q, qdata) {
     
     });
     //res.write(status);
-    /*if (status) {
+    if (status) {
       res.write('<br>');
       res.write('<div class="alert alert-success">');
       res.write('<strong>Dodano do bazy! </strong>');
@@ -39,6 +39,6 @@ exports.dodajSprawe = function (res, q, qdata) {
       res.write('<strong>Pozycja nie została dodana! </strong>');
       res.write('Nie udało się połączyć z bazą danych. <a href="#" class="alert-link">Zgłoś problem</a>.');
       res.write('</div>');
-    } */
+    } 
   }
 };
