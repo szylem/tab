@@ -18,7 +18,7 @@ exports.pokazSprawy = function (res, q, qdata) {
       } 
       db.close();
     });
-    console.log(wynik[2].msg);
+    console.log(printjson (wynik[0]));
   });
   //res.write(wynik[0].msg);
 };
