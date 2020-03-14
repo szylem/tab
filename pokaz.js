@@ -9,7 +9,11 @@ exports.pokazSprawy = function (res, q, qdata) {
     var query = { aktywny: 1 };
     dbo.collection("dash").find(query).toArray(function(err, result) {
       if (err) throw err;
-      console.log(result);
+      //console.log(result);
+      for (x in result) {
+        console.log(result[x].obiekt);
+        console.log(result[x].msg);
+      } 
       db.close();
     });
   });
