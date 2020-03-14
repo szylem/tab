@@ -2,9 +2,8 @@ var http = require('http');
 var url = require('url');
 var fs = require('fs');
 var add = require('./dodaj.js');
+var show = require('./pokaz.js');
 const PORT = process.env.PORT || 3000;
-
-
 
 http.createServer(function (req, res) {
   var q = url.parse(req.url, true);
@@ -20,8 +19,8 @@ http.createServer(function (req, res) {
     res.write(data);
     if (q.pathname == '/dodaj.html'){
         add.dodajSprawe(res, q, qdata);
-    } else {
-        console.log('');
+    } else if (q.pathname == '/pokaz.html'){
+        show.pokazSprawy(res, q, qdata);
     }
     return res.end();
   });
