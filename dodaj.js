@@ -1,10 +1,10 @@
 const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://saint:praca@cluster0-iip04.mongodb.net/test?retryWrites=true&w=majority"
-var status;
 
 exports.dodajSprawe = function (res, q, qdata) {
   console.log('Panel dodawania');
   if(q.search != null){
+    var status;
     console.log(qdata.obiekt);
     console.log("msg:" + qdata.msg);
     //połączenie z bazą
@@ -27,7 +27,7 @@ exports.dodajSprawe = function (res, q, qdata) {
       });
     status = true;
     });
-    //res.write(status);
+    res.write(status);
     if (status) {
       res.write('<br>');
       res.write('<div class="alert alert-success">');
