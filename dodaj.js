@@ -8,6 +8,7 @@ exports.dodajSprawe = function (res, q, qdata) {
     console.log(qdata.obiekt);
     console.log("msg:" + qdata.msg);
     //połączenie z bazą
+    status = 0;
     MongoClient.connect(uri, function(err, db) {
       if (err) throw err;
       var dbo = db.db("saint");
@@ -28,5 +29,11 @@ exports.dodajSprawe = function (res, q, qdata) {
       });
     
     });
+    if (status = 1) {
+      res.write('<div class="alert alert-success">');
+      res.write('<strong>Success!</strong>');
+      res.write('You should <a href="#" class="alert-link">read this message</a>.');
+      res.write('</div>');
+    }
   }
 };
