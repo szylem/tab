@@ -20,14 +20,14 @@ exports.dodajSprawe = function (res, q, qdata) {
       //tworzenie wpisu
       var myobj = { obiekt: qdata.obiekt, msg: qdata.msg , "data utworzenia": data, aktywny: 1 };
       //dodanie wpisu
-      status = dbo.collection("dash").insertOne(myobj, function(err, res) {
+      dbo.collection("dash").insertOne(myobj, function(err, res) {
         if (err) throw err;
         console.log("1 document inserted");
         db.close();
       });
-    
+    status = true;
     });
-    res.write(status);
+    //res.write(status);
     if (status) {
       res.write('<br>');
       res.write('<div class="alert alert-success">');
