@@ -3,7 +3,7 @@ const uri = "mongodb+srv://saint:praca@cluster0-iip04.mongodb.net/test?retryWrit
 
 
 exports.pokazSprawy = function (res, q, qdata) {
-  var result;
+  var wynik = [];
   console.log('Tablica');
   MongoClient.connect(uri, function(err, db) {
     if (err) throw err;
@@ -15,9 +15,10 @@ exports.pokazSprawy = function (res, q, qdata) {
       for (x in result) {
         console.log(result[x].obiekt);
         console.log(result[x].msg);
+        wynik = result.slice();
       } 
       db.close();
     });
   });
-  res.write(result[0].obiekt);
+  res.write(wynik[0].obiekt);
 };
