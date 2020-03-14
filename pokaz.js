@@ -20,5 +20,5 @@ exports.pokazSprawy = function (res, q, qdata) {
     });
     console.log(wynik);
   });
-  res.write(wynik[0].msg);
+  //res.write(wynik[0].msg);
 };
