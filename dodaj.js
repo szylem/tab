@@ -21,7 +21,8 @@ exports.dodajSprawe = function (res, q, qdata) {
       //dodanie wpisu
       dbo.collection("dash").insertOne(myobj, function(err, res) {
         if (err) throw err;
-        console.log("1 document inserted");
+        status = false;
+        //console.log("1 document inserted");
         db.close();
       });
     
