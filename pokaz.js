@@ -5,7 +5,7 @@ var wynik;
 exports.pokazSprawy = function (res, q, qdata) {
   
   console.log('Tablica');
-  MongoClient.connect(uri, { useNewUrlParser: true } ,function(err, client) {
+  MongoClient.connect(uri, { useUnifiedTopology: true }, function(err, client) {
     if (err) throw err;
       var dbo = client.db("saint");
       var query = { aktywny: 1 };
