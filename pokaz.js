@@ -11,6 +11,7 @@ exports.pokazSprawy = function (res, q, qdata) {
       var query = { aktywny: 1 };
       dbo.collection("dash").find(query).toArray().then((docs) => {
         console.log(docs);
+        wynik = docs[0].obiekt;
       }).catch((err) => {
         console.log(err);
       }).finally(() => {
@@ -19,6 +20,6 @@ exports.pokazSprawy = function (res, q, qdata) {
       
   });
   
-  //console.log(wynik + "poza");  
+  console.log(wynik + "  poza");  
   
 };
