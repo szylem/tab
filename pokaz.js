@@ -18,6 +18,6 @@ exports.pokazSprawy = function (res, q, qdata) {
     
   });
   
-  console.log(result[0].obiekt + "poza");  
+  console.log(result);  
   //printjson (wynik[0]);
 };
