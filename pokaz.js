@@ -3,21 +3,20 @@ const uri = "mongodb+srv://saint:praca@cluster0-iip04.mongodb.net/test?retryWrit
 
 
 exports.pokazSprawy = function (res, q, qdata) {
-  var result = [];
+  var cursor;
+  var wynik;
   console.log('Tablica');
   MongoClient.connect(uri, function(err, db) {
     if (err) throw err;
     var dbo = db.db("saint");
     var query = { aktywny: 1 };
-    dbo.collection("dash").find(query).toArray(function(err, result) {
+    cursor = dbo.collection("dash").find(query).toArray(function(err, result) {
       if (err) throw err;
-        res.write("napis");  
-        console.log(result[0].obiekt);  
         db.close();
     });
-    
+    wynik = cursor.next();
   });
   
-  console.log(result);  
+  console.log(wynik);  
   //printjson (wynik[0]);
 };
