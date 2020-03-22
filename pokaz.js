@@ -19,6 +19,6 @@ exports.pokazSprawy = function (res, q, qdata) {
     
   });
   if(wynik.length > 0)
-  res.write(wynik[0]);
+  console.log(wynik[0] + "wynik");  
   //printjson (wynik[0]);
 };
