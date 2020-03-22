@@ -11,7 +11,7 @@ exports.pokazSprawy = function (res, q, qdata) {
       var query = { aktywny: 1 };
       dbo.collection("dash").find(query).toArray().then((docs) => {
         console.log(docs);
-        wynik = docs[0].obiekt;
+        res.write("wyniki");
       }).catch((err) => {
         console.log(err);
       }).finally(() => {
