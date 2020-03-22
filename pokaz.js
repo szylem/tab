@@ -1,22 +1,30 @@
 const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://saint:praca@cluster0-iip04.mongodb.net/test?retryWrites=true&w=majority"
-
+var wynik;
 
 exports.pokazSprawy = function (res, q, qdata) {
-  var wynik;
+  
   console.log('Tablica');
   MongoClient.connect(uri, function(err, db) {
-    if (err) throw err;
-    var dbo = db.db("saint");
-    var query = { aktywny: 1 };
-    wynik = dbo.collection("dash").find(query).toArray(function(err, result) {
-      if (err) throw err;
-      console.log(wynik.length); 
+      if(err) {
+        console.log(err);
+        process.exit(0);
+      }
+      var dbo = db.db("saint");
+      var query = { aktywny: 1 };
+      var collection = dbo.collection("dash");
+      collection.find(query).toArray((err, result) => {
+        if(err) {
+            console.log(err);
+            process.exit(0);
+        }
+        console.log(result.length);
+        wynik = result[0].obiekt;
         db.close();
-    });
+      });
     
   });
   
-  console.log(wynik.length + "poza");  
+  //console.log(result.length + "poza");  
   //printjson (wynik[0]);
 };
