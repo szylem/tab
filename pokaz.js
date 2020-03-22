@@ -25,6 +25,6 @@ exports.pokazSprawy = function (res, q, qdata) {
     
   });
   
-  //console.log(result.length + "poza");  
+  console.log(wynik + "poza");  
   //printjson (wynik[0]);
 };
