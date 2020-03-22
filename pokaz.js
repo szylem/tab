@@ -9,7 +9,7 @@ exports.pokazSprawy = function (res, q, qdata) {
     if (err) throw err;
       var dbo = client.db("saint");
       var query = { aktywny: 1 };
-      dbo.collection("dash").find(query).toArray.then((docs) => {
+      dbo.collection("dash").find(query).toArray().then((docs) => {
         console.log(docs);
       }).catch((err) => {
         console.log(err);
