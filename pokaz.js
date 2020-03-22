@@ -5,26 +5,20 @@ var wynik;
 exports.pokazSprawy = function (res, q, qdata) {
   
   console.log('Tablica');
-  MongoClient.connect(uri, function(err, db) {
-      if(err) {
-        console.log(err);
-        process.exit(0);
-      }
-      var dbo = db.db("saint");
+  MongoClient.connect(uri, { useNewUrlParser: true } ,function(err, client) {
+    if (err) throw err;
+      var dbo = client.db("saint");
       var query = { aktywny: 1 };
-      var collection = dbo.collection("dash");
-      collection.find(query).toArray((err, result) => {
-        if(err) {
-            console.log(err);
-            process.exit(0);
-        }
-        console.log(result.length);
-        wynik = result[0].obiekt;
-        db.close();
+      dbo.collection("dash").find(query).toArray.then((docs) => {
+        console.log(docs);
+      }).catch((err) => {
+        console.log(err);
+      }).finally(() => {
+        client.close();
       });
-    
+      
   });
   
-  console.log(wynik + "poza");  
-  //printjson (wynik[0]);
+  //console.log(wynik + "poza");  
+  
 };
