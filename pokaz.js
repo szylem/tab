@@ -11,11 +11,11 @@ exports.pokazSprawy = function (res, q, qdata) {
     var query = { aktywny: 1 };
     wynik = dbo.collection("dash").find(query).toArray(function(err, result) {
       if (err) throw err;
-      
+        console.log(result[0].obiekt);  
       db.close();
     });
     
   });
-  console.log(wynik[0].obiekt);
+  console.log(result[0].obiekt);
   //printjson (wynik[0]);
 };
