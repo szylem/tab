@@ -17,7 +17,7 @@ exports.pokazSprawy = function (res, q, qdata) {
     });
     
   });
-  if(result.length > 0)
+  
   console.log(result[0].obiekt + "poza");  
   //printjson (wynik[0]);
 };
