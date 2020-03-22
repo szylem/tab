@@ -10,7 +10,7 @@ exports.pokazSprawy = function (res, q, qdata) {
       var query = { aktywny: 1 };
       dbo.collection("dash").find(query).then((docs) => {
         console.log(docs);
-        res.write("wyniki");
+        
       }).catch((err) => {
         console.log(err);
       }).finally(() => {
