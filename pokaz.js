@@ -18,10 +18,11 @@ exports.pokazSprawy = function (res, q, qdata) {
       //I have no index file to render, so I print the result to console
       //Also send back the JSON string bare through the channel
       //console.log(resultArray);
-      res.send(resultArray);
+      //res.send(resultArray);
       });
   });
   
-  //console.log(resultArray.lenght);  
+  //while(resultArray.lenght == 0) { console.log("czekam.."); };
+  console.log(resultArray.lenght);  
   
 };
