@@ -17,11 +17,11 @@ exports.pokazSprawy = function (res, q, qdata) {
       client.close();
       //I have no index file to render, so I print the result to console
       //Also send back the JSON string bare through the channel
-      console.log(resultArray);
+      //console.log(resultArray);
       //res.send(resultArray);
       });
   });
   
-  //console.log(wynik + "  poza");  
+  console.log(resultArray.lenght);  
   
 };
