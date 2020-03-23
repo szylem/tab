@@ -22,7 +22,7 @@ exports.pokazSprawy = function (res, q, qdata) {
       });
   });
   
-  //while(resultArray.lenght == 0) { console.log("czekam.."); };
+  while(resultArray.lenght == undefined) { console.log("czekam.."); };
   console.log(resultArray.lenght);  
   
 };
