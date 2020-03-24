@@ -28,7 +28,7 @@ exports.pokazSprawy = function (res, q, qdata) {
     console.log(wyniki[0]);
     console.log(wyniki[1]);
     res.write("wyniki <br>");
-  }, 3000);
+  }, 2000);
   res.write("po wszystkim");  
   
 };
