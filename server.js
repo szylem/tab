@@ -24,7 +24,7 @@ http.createServer(function (req, res) {
         show.pokazSprawy(res, q, qdata);
         setTimeout(function(){ 
             return res.end();        
-        }, 3000);
+        }, 2000);
     }
     //return res.end();
   });
