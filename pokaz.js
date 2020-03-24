@@ -4,7 +4,9 @@ const uri = "mongodb+srv://saint:praca@cluster0-iip04.mongodb.net/test?retryWrit
 
 exports.pokazSprawy = function (res, q, qdata) {
   console.log('Tablica');
-  var wyniki = [];
+  var obiekty = [];
+  var msg = [];
+  var data = [];
   MongoClient.connect(uri, { useUnifiedTopology: true }, function(err, client) {
       if (err) throw err;
       var dbo = client.db("saint");
@@ -13,11 +15,11 @@ exports.pokazSprawy = function (res, q, qdata) {
       dbo.collection("dash").find(query).toArray(function(err, result) {
           if (err) throw err;
           console.log("Wyniki z bazy");
-          wyniki[0] = result[0].obiekt;
-          console.log(wyniki[0]);
           var i;
           for(i in result){
-            wyniki[i] = result[i].obiekt;
+            obiekty[i] = result[i].obiekt;
+            msg[i] = result[i].msg;
+            data[i] = result[i]."data utworzenia";
           }
           client.close();
       });
@@ -25,10 +27,13 @@ exports.pokazSprawy = function (res, q, qdata) {
   res.write("przed timeout <br>");
   setTimeout(function(){ 
     console.log("Połączenie zakończone");
-    console.log(wyniki[0]);
-    console.log(wyniki[1]);
-    res.write("wyniki <br>");
+    var j;
+    for (j in obiekty){
+      res.write(obiekty[j] + " ");
+      res.write(msg[j] + " ");
+      res.write(data[j]);
+    }
   }, 2000);
-  res.write("po wszystkim");  
+  res.write("po wszystkim <br>");  
   
 };
