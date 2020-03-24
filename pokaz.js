@@ -23,7 +23,7 @@ exports.pokazSprawy = function (res, q, qdata) {
   
   setTimeout(function(){ 
     console.log("Połączenie zakończone"); 
-    console.log(wyniki.lenght); 
+    //console.log(wyniki.lenght); 
   }, 3000);
     
   
