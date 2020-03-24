@@ -17,7 +17,7 @@ exports.pokazSprawy = function (res, q, qdata) {
       });
   });
   
-  
-  console.log("Połączenie zakończone");  
+  setTimeout(function(){ console.log("Połączenie zakończone"); }, 3000);
+    
   
 };
