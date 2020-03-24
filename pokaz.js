@@ -19,7 +19,7 @@ exports.pokazSprawy = function (res, q, qdata) {
           for(i in result){
             obiekty[i] = result[i].obiekt;
             msg[i] = result[i].msg;
-            data[i] = result[i]."data utworzenia";
+            data[i] = result[i].dataUtworzenia;
           }
           client.close();
       });
