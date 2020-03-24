@@ -17,7 +17,7 @@ exports.dodajSprawe = function (res, q, qdata) {
       data += (((d.getMonth()+1) < 10) ? "0" + (d.getMonth()+1) : (d.getMonth()+1)) + "-";
       data += (d.getDate() < 10) ? "0" + d.getDate() : d.getDate();
       //tworzenie wpisu
-      var myobj = { obiekt: qdata.obiekt, msg: qdata.msg , "data utworzenia": data, aktywny: 1 };
+      var myobj = { obiekt: qdata.obiekt, msg: qdata.msg , dataUtworzenia": data, aktywny: 1 };
       //dodanie wpisu
       dbo.collection("dash").insertOne(myobj, function(err, res) {
         if (err) throw err;
