@@ -24,21 +24,24 @@ exports.pokazSprawy = function (res, q, qdata) {
           client.close();
       });
   });
-  res.write("<h1>Bieżące sprawy</h1>");
+  
   setTimeout(function(){ 
     console.log("Połączenie zakończone");
-    res.write('<div class="container"><table class="table table-striped">');
-    res.write('<thead><tr><th>Temat</th><th>Treść</th><th>Data utworzenia</th></tr></thead><tbody>');
+    res.write('<div class="container">');
+    res.write("<h1>Bieżące sprawy</h1>");
+    res.write('<table class="table table-striped">');
+    res.write('<thead><tr><th>Lp.</th><th>Temat</th><th>Treść</th><th>Data utworzenia</th></tr></thead><tbody>');
     var j;
     for (j in obiekty){
       res.write('<tr>');
+      res.write('<td>' + (j+1) + '</td>');
       res.write('<td>' + obiekty[j] + '</td>');
       res.write('<td>' + msg[j] + '</td>');
       res.write('<td>' + data[j] + '</td>');
       res.write('</tr>');
     }
     res.write('</tr></tbody></table></div>');
-  }, 2000);
+  }, 1000);
   
   
 };
