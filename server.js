@@ -19,10 +19,12 @@ http.createServer(function (req, res) {
     res.write(data);
     if (q.pathname == '/dodaj.html'){
         add.dodajSprawe(res, q, qdata);
+        return res.end();
     } else if (q.pathname == '/pokaz.html'){
         show.pokazSprawy(res, q, qdata);
+        return res.end();
     }
-    return res.end();
+    //return res.end();
   });
   
 
