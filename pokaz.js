@@ -22,12 +22,12 @@ exports.pokazSprawy = function (res, q, qdata) {
           client.close();
       });
   });
-  res.write("przed timeout");
+  res.write("przed timeout <br>");
   setTimeout(function(){ 
     console.log("Połączenie zakończone");
     console.log(wyniki[0]);
     console.log(wyniki[1]);
-    //res.write(wyniki);
+    res.write("wyniki <br>");
   }, 3000);
   res.write("po wszystkim");  
   
