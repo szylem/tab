@@ -17,7 +17,8 @@ exports.pokazSprawy = function (res, q, qdata) {
           console.log(result[].lenght);
           //wyniki[0] = result[0].obiekt;
           //console.log(wyniki[0]);
-          for(let i = 0; i < result.lenght; i++){
+          var i;
+          for(i in result){
             wyniki[i] = result[i].obiekt;
           }
           client.close();
