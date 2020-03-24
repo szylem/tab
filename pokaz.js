@@ -13,7 +13,7 @@ exports.pokazSprawy = function (res, q, qdata) {
       dbo.collection("dash").find(query).toArray(function(err, result) {
           if (err) throw err;
           console.log("Wyniki z bazy");
-          db.close();
+          client.close();
       });
   });
   
