@@ -25,8 +25,9 @@ http.createServer(function (req, res) {
         setTimeout(function(){ 
             return res.end();        
         }, 2000);
+    } else {
+        return res.end();
     }
-    //return res.end();
   });
   
 
