@@ -14,7 +14,8 @@ exports.pokazSprawy = function (res, q, qdata) {
           if (err) throw err;
           console.log("Wyniki z bazy");
           console.log(result[0].obiekt);
-          let wyniki = result.slice();
+          let wyniki = [];
+          wyniki = result.slice();
           console.log(wyniki.lenght);
           client.close();
       });
