@@ -14,8 +14,11 @@ exports.pokazSprawy = function (res, q, qdata) {
           if (err) throw err;
           console.log("Wyniki z bazy");
           console.log(result[0].obiekt);
-          wyniki[0] = result[0].obiekt;
-          console.log(wyniki[0]);
+          //wyniki[0] = result[0].obiekt;
+          //console.log(wyniki[0]);
+          for(let i = 0; i < result.lenght; i++){
+            wyniki.push(result[i].obiekt);
+          }
           client.close();
       });
   });
@@ -23,7 +26,7 @@ exports.pokazSprawy = function (res, q, qdata) {
   setTimeout(function(){ 
     console.log("Połączenie zakończone");
     console.log(wyniki[0]);
-    console.log(wyniki.lenght); 
+    res.write(wyniki);
   }, 3000);
     
   
