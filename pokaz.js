@@ -4,8 +4,8 @@ const uri = "mongodb+srv://saint:praca@cluster0-iip04.mongodb.net/test?retryWrit
 
 exports.pokazSprawy = function (res, q, qdata) {
   console.log('Tablica');
-  var wyniki = [];
-  MongoClient.connect(uri, { useUnifiedTopology: true }, function(err, client, wyniki) {
+  //var wyniki = [];
+  MongoClient.connect(uri, { useUnifiedTopology: true }, function(err, client) {
       if (err) throw err;
       var dbo = client.db("saint");
       var query = { aktywny: 1 };
@@ -14,8 +14,8 @@ exports.pokazSprawy = function (res, q, qdata) {
           if (err) throw err;
           console.log("Wyniki z bazy");
           console.log(result[0].obiekt);
-          let wyniki = [];
-          wyniki = result.slice();
+          var wyniki = [];
+          wyniki[0] = result[0].obiekt;
           console.log(wyniki.lenght);
           client.close();
       });
