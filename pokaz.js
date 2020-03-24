@@ -17,7 +17,7 @@ exports.pokazSprawy = function (res, q, qdata) {
           //wyniki[0] = result[0].obiekt;
           //console.log(wyniki[0]);
           for(let i = 0; i < result.lenght; i++){
-            wyniki.push(result[i].obiekt);
+            wyniki[i] = result[i].obiekt;
           }
           client.close();
       });
