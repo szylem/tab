@@ -13,10 +13,8 @@ exports.pokazSprawy = function (res, q, qdata) {
       dbo.collection("dash").find(query).toArray(function(err, result) {
           if (err) throw err;
           console.log("Wyniki z bazy");
-          console.log(result[0].obiekt);
-          console.log(result[].lenght);
-          //wyniki[0] = result[0].obiekt;
-          //console.log(wyniki[0]);
+          wyniki[0] = result[0].obiekt;
+          console.log(wyniki[0]);
           var i;
           for(i in result){
             wyniki[i] = result[i].obiekt;
