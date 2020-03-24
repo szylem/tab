@@ -30,10 +30,10 @@ exports.pokazSprawy = function (res, q, qdata) {
     console.log("Połączenie zakończone");
     res.write('<table class="table table-striped">');
     res.write('<thead><tr><th>Lp.</th><th>Temat</th><th>Treść</th><th>Data utworzenia</th></tr></thead><tbody>');
-    var j;
+    var j,lp = 1;
     for (j in obiekty){
       res.write('<tr>');
-      res.write('<td>' + (j+1) + '</td>');
+      res.write('<td>' + lp++ + '</td>');
       res.write('<td>' + obiekty[j] + '</td>');
       res.write('<td>' + msg[j] + '</td>');
       res.write('<td>' + data[j] + '</td>');
