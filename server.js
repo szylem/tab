@@ -22,7 +22,9 @@ http.createServer(function (req, res) {
         return res.end();
     } else if (q.pathname == '/pokaz.html'){
         show.pokazSprawy(res, q, qdata);
-        return res.end();
+        setTimeout(function(){ 
+            return res.end();        
+        }, 3000);
     }
     //return res.end();
   });
