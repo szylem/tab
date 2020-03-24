@@ -30,7 +30,7 @@ exports.dodajSprawe = function (res, q, qdata) {
       res.write('<br>');
       res.write('<div class="alert alert-success">');
       res.write('<strong>Dodano do bazy! </strong>');
-      res.write('Powinieneś już widzieć swoją sprawę na <a href="#" class="alert-link">tablicy</a>.');
+      res.write('Powinieneś już widzieć swoją sprawę na <a href="pokaz.html" class="alert-link">tablicy</a>.');
       res.write('</div>');
     } else {
       res.write('<br>');
