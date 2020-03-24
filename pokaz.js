@@ -24,11 +24,10 @@ exports.pokazSprawy = function (res, q, qdata) {
           client.close();
       });
   });
-  
+  res.write('<div class="container">');
+  res.write("<h2>Bieżące sprawy</h2>");
   setTimeout(function(){ 
     console.log("Połączenie zakończone");
-    res.write('<div class="container">');
-    res.write("<h1>Bieżące sprawy</h1>");
     res.write('<table class="table table-striped">');
     res.write('<thead><tr><th>Lp.</th><th>Temat</th><th>Treść</th><th>Data utworzenia</th></tr></thead><tbody>');
     var j;
