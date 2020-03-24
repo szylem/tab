@@ -26,7 +26,8 @@ exports.pokazSprawy = function (res, q, qdata) {
   setTimeout(function(){ 
     console.log("Połączenie zakończone");
     console.log(wyniki[0]);
-    res.write(wyniki);
+    console.log(wyniki[1]);
+    //res.write(wyniki);
   }, 3000);
     
   
