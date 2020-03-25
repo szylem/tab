@@ -40,5 +40,5 @@ exports.pokazSprawy = function (res, q, qdata) {
       res.write('</tr>');
     }
     res.write('</tr></tbody></table></div>');
-  }, 1000);
+  }, 2000);
 };
