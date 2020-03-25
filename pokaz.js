@@ -4,6 +4,7 @@ const uri = "mongodb+srv://saint:praca@cluster0-iip04.mongodb.net/test?retryWrit
 
 exports.pokazSprawy = function (res, q, qdata) {
   console.log('Tablica');
+  setInterval(function(){
   var obiekty = [];
   var msg = [];
   var data = [];
@@ -42,5 +43,5 @@ exports.pokazSprawy = function (res, q, qdata) {
     res.write('</tr></tbody></table></div>');
   }, 1000);
   
-  
+ }, 3000);
 };
