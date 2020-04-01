@@ -27,6 +27,20 @@
     position: absolute;
     top: -15px;
 }
+.button {
+  display: block;
+  border-radius: 6px;
+  background-color: #ff582b;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 26px;
+  padding: 20px;
+  width: 250px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: auto;
+}
 </style>
 </head>
 <body>
@@ -39,7 +53,7 @@
     </div>
   </div>
   <div class="container p-5 my-5 bg-dark text-white">
-        <form style="background-color: #FFFFFF">
+        <form>
             <div class="form-group" style="margin-top: 20px">
                 <label for="obiekt" >Temat: </label><br>
                 <input type="text" id="obiekt" name="obiekt" class="form-control" placeholder="Wprowadź temat" required>
@@ -48,7 +62,7 @@
                 <label for="msg">Wiadomość: </label><br>
                 <textarea rows="3" id="msg" name="msg" class="form-control" placeholder="Wprowadź treść sprawy..." required></textarea>
             </div>
-            <button type="submit" class="btn btn-primary">Dodaj</button>
+            <button type="submit">Dodaj</button>
         </form>
   </div>
 </body>
