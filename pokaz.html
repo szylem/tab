@@ -17,8 +17,9 @@
 
             function myTimer() {
             var d = new Date();
-            var t = d.toLocaleTimeString();
-            document.getElementById("demo").innerHTML = t;
+            var time = d.toLocaleTimeString();
+            var day = d.toLocaleDateString();
+            document.getElementById("demo").innerHTML = day + " " + time;
             }
          //-->
   </script>
