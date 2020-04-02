@@ -24,7 +24,7 @@ exports.pokazSprawy = function (res, q, qdata) {
           client.close();
       });
   });
-  res.write('<div class="container">');
+  res.write('<div class="container-fluid p-5 my-5">');
   res.write('<p id="demo"></p>');
   setTimeout(function(){ 
     console.log("Połączenie zakończone");
@@ -39,6 +39,6 @@ exports.pokazSprawy = function (res, q, qdata) {
       res.write('<td>' + data[j] + '</td>');
       res.write('</tr>');
     }
-    res.write('</tr></tbody></table></div></body></html>');
+    res.write('</tbody></table></div></body></html>');
   }, 2000);
 };
