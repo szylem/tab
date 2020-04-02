@@ -39,6 +39,6 @@ exports.pokazSprawy = function (res, q, qdata) {
       res.write('<td>' + data[j] + '</td>');
       res.write('</tr>');
     }
-    res.write('</tr></tbody></table></div>');
+    res.write('</tr></tbody></table></div></body></html>');
   }, 2000);
 };
