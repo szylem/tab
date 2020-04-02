@@ -18,8 +18,8 @@
             function myTimer() {
             var d = new Date();
             var time = d.toLocaleTimeString();
-            var day = d.toLocaleDateString();
-            document.getElementById("demo").innerHTML = day + " " + time;
+            var day = d.toLocaleString("en-GB");
+            document.getElementById("demo").innerHTML = day;
             }
          //-->
   </script>
