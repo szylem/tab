@@ -24,7 +24,7 @@ exports.pokazSprawy = function (res, q, qdata) {
           client.close();
       });
   });
-  res.write('<div class="container-fluid p-5 my-5">');
+  res.write('<div class="container-fluid p-3 my-3">');
   res.write('<p id="demo"></p>');
   setTimeout(function(){ 
     console.log("Połączenie zakończone");
