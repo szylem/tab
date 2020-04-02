@@ -25,7 +25,6 @@ exports.pokazSprawy = function (res, q, qdata) {
       });
   });
   res.write('<div class="container">');
-  res.write("<h2>Bieżące sprawy</h2>");
   setTimeout(function(){ 
     console.log("Połączenie zakończone");
     res.write('<table class="table table-striped">');
