@@ -28,7 +28,7 @@ exports.pokazSprawy = function (res, q, qdata) {
   res.write('<p id="demo"></p>');
   setTimeout(function(){ 
     console.log("Połączenie zakończone");
-    res.write('<table class="table table-striped">');
+    res.write('<table class="table table-dark table-striped">');
     res.write('<thead><tr><th>Lp.</th><th>Temat</th><th>Treść</th><th>Data utworzenia</th></tr></thead><tbody>');
     var j,lp = 1;
     for (j in obiekty){
