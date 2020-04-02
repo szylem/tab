@@ -25,6 +25,7 @@ exports.pokazSprawy = function (res, q, qdata) {
       });
   });
   res.write('<div class="container">');
+  res.write('<p id="demo"></p>');
   setTimeout(function(){ 
     console.log("Połączenie zakończone");
     res.write('<table class="table table-striped">');
