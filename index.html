@@ -41,14 +41,14 @@
   cursor: pointer;
   margin: auto;
 }
-   .button span {
+   .button a span {
   cursor: pointer;
   display: inline-block;
   position: relative;
   transition: 0.5s;
   font-family: 'ubunturegular',sans-serif;
 }
-.button span:after {
+.button a span:after {
   content: '\00bb';
   position: absolute;
   opacity: 0;
@@ -57,11 +57,11 @@
   transition: 0.5s;
 }
 
-.button:hover span {
+.button:hover a span {
   padding-right: 25px;
 }
 
-.button:hover span:after {
+.button:hover a span:after {
   opacity: 1;
   right: 0;
 }
