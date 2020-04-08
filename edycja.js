@@ -42,6 +42,7 @@ exports.edytujSprawy = function (res, q, qdata) {
     res.write('<button type="submit" class="usun-button">Usuń</button></form>');
     res.write('</div></div></body></html>');
 //aktywne elementy zostały wyświetlone
+  }, 2000);
   //Jeśli jakiś element jest do usunięcia  
     if(q.search != null){
       MongoClient2.connect(uri, { useUnifiedTopology: true }, function(err, client) {
@@ -62,5 +63,4 @@ exports.edytujSprawy = function (res, q, qdata) {
       res.write('Jeśli chcesz cofnąć tą operację skontaktuj się z administratorem bazy.');
       res.write('</div>'); 
     }
-  }, 2000);
 };
