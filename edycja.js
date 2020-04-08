@@ -27,10 +27,10 @@ exports.edytujSprawy = function (res, q, qdata) {
   res.write('<div class="container-fluid p-3 my-5 bg-dark text-white">');
   setTimeout(function(){ 
     console.log("Połączenie zakończone");
-    res.write('<form class="form-inline" action="">');
+    res.write('<form class="form-inline mt-5" action="">');
     res.write('<div class="form-group">');
     res.write('<label class="mr-sm-2" for="sel1">Wybierz element: </label>');
-    res.write('<select class="form-control" id="sel1" name="sellist1">');
+    res.write('<select class="form-control mr-sm-2" id="sel1" name="sellist1">');
     var j,lp = 1;
     for (j in obiekty){
       res.write('<option>');
