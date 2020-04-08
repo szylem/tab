@@ -3,7 +3,7 @@ const uri = "mongodb+srv://saint:praca@cluster0-iip04.mongodb.net/test?retryWrit
 
 
 exports.edytujSprawy = function (res, q, qdata) {
-  console.log('Tablica');
+  console.log('Edycja');
   var obiekty = [];
   var msg = [];
   var id = [];
@@ -25,6 +25,7 @@ exports.edytujSprawy = function (res, q, qdata) {
       });
   });
   res.write('<div class="container-fluid p-3 my-5 bg-dark text-white">');
+  res.write('<div class="container bg-dark text-white">');
   setTimeout(function(){ 
     console.log("Połączenie zakończone");
     res.write('<form class="form-inline mt-5" action="">');
@@ -39,6 +40,6 @@ exports.edytujSprawy = function (res, q, qdata) {
     }
     res.write('</select>');
     res.write('</div><button type="submit" class="btn btn-danger">Usuń</button></form>');
-    res.write('</div></body></html>');
+    res.write('</div></div></body></html>');
   }, 2000);
 };
