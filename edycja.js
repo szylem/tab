@@ -6,6 +6,29 @@ const uri = "mongodb+srv://saint:praca@cluster0-iip04.mongodb.net/test?retryWrit
 
 exports.edytujSprawy = function (res, q, qdata) {
   console.log('Edycja');
+  //Jeśli jakiś element jest do usunięcia  
+    if(q.search != null){
+      MongoClient2.connect(uri, { useUnifiedTopology: true }, function(err, client) {
+        if (err) throw err;
+        var dbo = client.db("saint");
+        var id = qdata.usun;
+        var s_id = new ObjectId(id);
+        var query = { _id: s_id };
+        var newvalues = { $set: { aktywny: 0 } };
+        dbo.collection("dash").updateOne(query, newvalues, function(err, result) {
+          if (err) throw err;
+          console.log("Zmiana statusu na nieaktywny");
+          console.log(id);
+          client.close();
+        });
+      });
+    //zakończona modyfikacja w bazie
+      res.write('<br>');
+      res.write('<div class="alert alert-danger">');
+      res.write('<strong>Pozycja została usunięta! </strong>');
+      res.write('Jeśli chcesz cofnąć tą operację skontaktuj się z administratorem bazy.');
+      res.write('</div>'); 
+    }
 // szykowanie rozwijanej listy elementów z bazy
   var obiekty = [];
   var msg = [];
@@ -43,28 +66,5 @@ exports.edytujSprawy = function (res, q, qdata) {
     res.write('<button type="submit" class="usun-button">Usuń</button></form>');
     res.write('</div></div></body></html>');
 //aktywne elementy zostały wyświetlone
-    //Jeśli jakiś element jest do usunięcia  
-    if(q.search != null){
-      MongoClient.connect(uri, { useUnifiedTopology: true }, function(err, client) {
-        if (err) throw err;
-        var dbo = client.db("saint");
-        var id = qdata.usun;
-        var s_id = new ObjectId(id);
-        var query = { _id: s_id };
-        var newvalues = { $set: { aktywny: 0 } };
-        dbo.collection("dash").updateOne(query, newvalues, function(err, result) {
-          if (err) throw err;
-          console.log("Zmiana statusu na nieaktywny");
-          console.log(id);
-          client.close();
-        });
-      });
-    //zakończona modyfikacja w bazie
-      res.write('<br>');
-      res.write('<div class="alert alert-danger">');
-      res.write('<strong>Pozycja została usunięta! </strong>');
-      res.write('Jeśli chcesz cofnąć tą operację skontaktuj się z administratorem bazy.');
-      res.write('</div>'); 
-    }
   }, 2000);
 };
