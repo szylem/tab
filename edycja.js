@@ -1,5 +1,6 @@
 const MongoClient = require('mongodb').MongoClient;
 const MongoClient2 = require('mongodb').MongoClient;
+var ObjectId = require('mongodb').ObjectId; 
 const uri = "mongodb+srv://saint:praca@cluster0-iip04.mongodb.net/test?retryWrites=true&w=majority"
 
 
@@ -48,8 +49,9 @@ exports.edytujSprawy = function (res, q, qdata) {
       MongoClient2.connect(uri, { useUnifiedTopology: true }, function(err, client) {
         if (err) throw err;
         var dbo = client.db("saint");
-        var id = 'ObjectId("' + qdata.usun + '")';
-        var query = { _id: { $in: [ id ] } };
+        var id = qdata.usun;
+        var s_id = new ObjectId(id);
+        var query = { _id: s_id };
         var newvalues = { $set: { aktywny: 0 } };
         dbo.collection("dash").updateOne(query, newvalues, function(err, result) {
           if (err) throw err;
