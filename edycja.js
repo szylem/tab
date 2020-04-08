@@ -1,4 +1,5 @@
 const MongoClient = require('mongodb').MongoClient;
+const MongoClient2 = require('mongodb').MongoClient;
 const uri = "mongodb+srv://saint:praca@cluster0-iip04.mongodb.net/test?retryWrites=true&w=majority"
 
 
@@ -43,7 +44,7 @@ exports.edytujSprawy = function (res, q, qdata) {
 //aktywne elementy zostały wyświetlone
   //Jeśli jakiś element jest do usunięcia  
     if(q.search != null){
-      MongoClient.connect(uri, { useUnifiedTopology: true }, function(err, client) {
+      MongoClient2.connect(uri, { useUnifiedTopology: true }, function(err, client) {
         if (err) throw err;
         var dbo = client.db("saint");
         var query = { _id: qdata.usun };
