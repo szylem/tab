@@ -6,29 +6,7 @@ const uri = "mongodb+srv://saint:praca@cluster0-iip04.mongodb.net/test?retryWrit
 
 exports.edytujSprawy = function (res, q, qdata) {
   console.log('Edycja');
-  //Jeśli jakiś element jest do usunięcia  
-    if(q.search != null){
-      MongoClient2.connect(uri, { useUnifiedTopology: true }, function(err, client) {
-        if (err) throw err;
-        var dbo = client.db("saint");
-        var id = qdata.usun;
-        var s_id = new ObjectId(id);
-        var query = { _id: s_id };
-        var newvalues = { $set: { aktywny: 0 } };
-        dbo.collection("dash").updateOne(query, newvalues, function(err, result) {
-          if (err) throw err;
-          console.log("Zmiana statusu na nieaktywny");
-          console.log(id);
-          client.close();
-        });
-      });
-    //zakończona modyfikacja w bazie
-      res.write('<br>');
-      res.write('<div class="alert alert-danger">');
-      res.write('<strong>Pozycja została usunięta! </strong>');
-      res.write('Jeśli chcesz cofnąć tą operację skontaktuj się z administratorem bazy.');
-      res.write('</div>'); 
-    }
+  
 // szykowanie rozwijanej listy elementów z bazy
   var obiekty = [];
   var msg = [];
@@ -53,7 +31,7 @@ exports.edytujSprawy = function (res, q, qdata) {
   res.write('<div class="container p-5 my-5 bg-dark text-white">');
   setTimeout(function(){ 
     console.log("Połączenie zakończone");
-    res.write('<form>');
+    res.write('<form action="index.html">');
     res.write('<label class="mr-sm-2" for="sel1">Wybierz element: </label>');
     res.write('<select class="form-control mr-sm-2" id="wybrany" name="usun">');
     var j,lp = 1;
@@ -67,4 +45,27 @@ exports.edytujSprawy = function (res, q, qdata) {
     res.write('</div></div></body></html>');
 //aktywne elementy zostały wyświetlone
   }, 2000);
+  //Jeśli jakiś element jest do usunięcia  
+    if(q.search != null){
+      MongoClient2.connect(uri, { useUnifiedTopology: true }, function(err, client) {
+        if (err) throw err;
+        var dbo = client.db("saint");
+        var id = qdata.usun;
+        var s_id = new ObjectId(id);
+        var query = { _id: s_id };
+        var newvalues = { $set: { aktywny: 0 } };
+        dbo.collection("dash").updateOne(query, newvalues, function(err, result) {
+          if (err) throw err;
+          console.log("Zmiana statusu na nieaktywny");
+          console.log(id);
+          client.close();
+        });
+      });
+    //zakończona modyfikacja w bazie
+      res.write('<br>');
+      res.write('<div class="alert alert-danger">');
+      res.write('<strong>Pozycja została usunięta! </strong>');
+      res.write('Jeśli chcesz cofnąć tą operację skontaktuj się z administratorem bazy.');
+      res.write('</div>'); 
+    }
 };
