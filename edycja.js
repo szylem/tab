@@ -48,7 +48,7 @@ exports.edytujSprawy = function (res, q, qdata) {
       MongoClient2.connect(uri, { useUnifiedTopology: true }, function(err, client) {
         if (err) throw err;
         var dbo = client.db("saint");
-        var query = { _id: qdata.usun };
+        var query = { _id: 'ObjectId("' + qdata.usun + '")' };
         var newvalues = { $set: { aktywny: 0 } };
         dbo.collection("dash").updateOne(query, newvalues, function(err, result) {
           if (err) throw err;
