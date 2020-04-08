@@ -4,6 +4,7 @@ const uri = "mongodb+srv://saint:praca@cluster0-iip04.mongodb.net/test?retryWrit
 
 exports.edytujSprawy = function (res, q, qdata) {
   console.log('Edycja');
+// szykowanie rozwijanej listy elementów z bazy
   var obiekty = [];
   var msg = [];
   var id = [];
@@ -11,7 +12,6 @@ exports.edytujSprawy = function (res, q, qdata) {
       if (err) throw err;
       var dbo = client.db("saint");
       var query = { aktywny: 1 };
-      var cursor = dbo.collection("dash").find(query);
       dbo.collection("dash").find(query).toArray(function(err, result) {
           if (err) throw err;
           console.log("Wyniki z bazy");
@@ -40,5 +40,26 @@ exports.edytujSprawy = function (res, q, qdata) {
     res.write('</select>');
     res.write('<button type="submit" class="usun-button">Usuń</button></form>');
     res.write('</div></div></body></html>');
+//aktywne elementy zostały wyświetlone
+  //Jeśli jakiś element jest do usunięcia  
+    if(q.search != null){
+      MongoClient.connect(uri, { useUnifiedTopology: true }, function(err, client) {
+        if (err) throw err;
+        var dbo = client.db("saint");
+        var query = { _id: qdata.usun };
+        var newvalues = { $set: { aktywny: 0 } };
+        dbo.collection("dash").updateOne(query, newvalues, function(err, result) {
+          if (err) throw err;
+          console.log("Zmiana statusu na nieaktywny");
+          client.close();
+        });
+      });
+    //zakończona modyfikacja w bazie
+      res.write('<br>');
+      res.write('<div class="alert alert-danger">');
+      res.write('<strong>Pozycja została usunięta! </strong>');
+      res.write('Jeśli chcesz cofnąć tą operację skontaktuj się z administratorem bazy.');
+      res.write('</div>'); 
+    }
   }, 2000);
 };
