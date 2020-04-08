@@ -49,7 +49,7 @@ exports.edytujSprawy = function (res, q, qdata) {
         if (err) throw err;
         var dbo = client.db("saint");
         var id = 'ObjectId("' + qdata.usun + '")';
-        var query = { _id: id };
+        var query = { _id: { $in: [ id ] } };
         var newvalues = { $set: { aktywny: 0 } };
         dbo.collection("dash").updateOne(query, newvalues, function(err, result) {
           if (err) throw err;
