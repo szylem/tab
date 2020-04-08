@@ -38,7 +38,7 @@ exports.edytujSprawy = function (res, q, qdata) {
       res.write('</option>');
     }
     res.write('</select>');
-    res.write('</div><button type="submit" class="btn btn-primary">Usuń</button></form>');
+    res.write('</div><button type="submit" class="btn btn-primary mb-2 bg-danger">Usuń</button></form>');
     res.write('</div></body></html>');
   }, 2000);
 };
