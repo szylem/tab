@@ -25,7 +25,7 @@ exports.edytujSprawy = function (res, q, qdata) {
       });
   });
   res.write('<div class="container-fluid p-3 my-5 bg-dark text-white">');
-  res.write('<div class="container bg-dark text-white">');
+  res.write('<div class="container p-5 my-5 bg-dark text-white">');
   setTimeout(function(){ 
     console.log("Połączenie zakończone");
     res.write('<form>');
