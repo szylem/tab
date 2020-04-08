@@ -22,7 +22,7 @@ http.createServer(function (req, res) {
         add.dodajSprawe(res, q, qdata);
         return res.end();
     } else if (q.pathname == '/edycja.html'){
-        show.edytujSprawy(res, q, qdata);
+        edit.edytujSprawy(res, q, qdata);
         setTimeout(function(){ 
         return res.end();        
         }, 3000);
