@@ -2,7 +2,7 @@ const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://saint:praca@cluster0-iip04.mongodb.net/test?retryWrites=true&w=majority"
 
 
-exports.pokazSprawy = function (res, q, qdata) {
+exports.edytujSprawy = function (res, q, qdata) {
   console.log('Tablica');
   var obiekty = [];
   var msg = [];
