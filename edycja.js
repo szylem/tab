@@ -29,17 +29,16 @@ exports.edytujSprawy = function (res, q, qdata) {
   setTimeout(function(){ 
     console.log("Połączenie zakończone");
     res.write('<form class="form-inline mt-5" action="">');
-    res.write('<div class="form-group">');
     res.write('<label class="mr-sm-2" for="sel1">Wybierz element: </label>');
     res.write('<select class="form-control mr-sm-2" id="sel1" name="sellist1">');
     var j,lp = 1;
     for (j in obiekty){
       res.write('<option>');
-      res.write(lp++ + " " + obiekty[j]);
+      res.write(lp++ + ". " + obiekty[j]);
       res.write('</option>');
     }
     res.write('</select>');
-    res.write('</div><button type="submit" class="btn btn-danger">Usuń</button></form>');
+    res.write('<button type="submit" class="btn btn-danger">Usuń</button></form>');
     res.write('</div></div></body></html>');
   }, 2000);
 };
